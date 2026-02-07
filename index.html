@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>der_46er Social Links</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #0f1115; margin: 0; padding: 0; }
+        .animate-in { animation: fadeIn 0.3s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
+        /* Rotating Gradient Animation */
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .group:hover .animate-rotate-slow {
+            animation: rotate 3s linear infinite;
+        }
+
+        .custom-scroll::-webkit-scrollbar { width: 5px; }
+        .custom-scroll::-webkit-scrollbar-track { background: transparent; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState } = React;
+
+        // --- Icons ---
+        const XIcon = () => (
+            <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 sm:w-5 sm:h-5">
+                <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/>
+            </svg>
+        );
+
+        const TikTokIcon = () => (
+            <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 sm:w-6 sm:h-6">
+                <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.86-.6-4.12-1.31a6.417 6.417 0 0 1-1.87-1.51c-.02 2.76-.01 5.51-.02 8.27-.05 1.83-.58 3.67-1.76 5.05-1.18 1.35-2.93 2.15-4.73 2.24-1.81.1-3.68-.4-5.11-1.54C3.39 19.99 2.52 18.11 2.53 16.1c-.01-1.86.64-3.74 1.92-5.11 1.27-1.39 3.16-2.18 5.07-2.12.11 0 .21.01.32.02v4.03c-1.13-.17-2.33.11-3.23.83a3.13 3.13 0 0 0-1.18 2.41c-.02 1.13.43 2.26 1.26 3.03.85.78 2.05 1.05 3.17.73a3.177 3.177 0 0 0 2.14-2.11c.19-.82.17-1.68.17-2.52.02-5.42.01-10.84.02-16.27z"/>
+            </svg>
+        );
+
+        const BlueSkyIcon = () => (
+            <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 sm:w-6 sm:h-6">
+                <path d="M12 10.8c-1.087-2.114-4.046-5.05-6.056-5.05C3.141 5.75 2 7.23 2 9.422c0 1.25.59 4.312 2.825 5.419 2.052 1.018 3.328 1.356 3.328 1.356s-.897.234-2.153.234C3.89 16.431 2 17.5 2 19.462 2 21.238 4.212 22 6 22c3.75 0 6-3 6-3s2.25 3 6 3c1.788 0 4-0.762 4-2.538 0-1.962-1.89-3.031-4-3.031-1.256 0-2.153-0.234-2.153-0.234s1.276-0.338 3.328-1.356c2.235-1.107 2.825-4.169 2.825-5.419 0-2.192-1.141-3.672-3.944-3.672-2.01 0-4.969 2.936-6.056 5.05z"/>
+            </svg>
+        );
+
+        const Globe = ({className}) => <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>;
+        const Youtube = ({className}) => <svg className={className} fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>;
+        const Instagram = ({className}) => <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>;
+        const Twitch = ({className}) => <svg className={className} fill="currentColor" viewBox="0 0 24 24"><path d="M2.149 0l-1.612 4.119v16.827h5.376v3.054l3.125-3.054h4.31l8.112-8.111V0H2.149zm15.747 11.411l-3.214 3.214H10.45l-2.5 2.5v-2.5H5.193V2.143h12.703v9.268zM15.02 5.143h-1.607v4.643H15.02V5.143zm-4.643 0H8.77v4.643h1.607V5.143z"/></svg>;
+        const Github = ({className}) => <svg className={className} fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>;
+        const ChevronRight = ({size}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>;
+        const Info = ({size}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>;
+        const X = ({size}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>;
+
+        const App = () => {
+            const [showLegal, setShowLegal] = useState(false);
+
+            const profile = {
+                name: "der_46er",
+                avatar: "https://drive.google.com/thumbnail?id=1oVP0DjtKXgHs_I6pwuXDyxCQ1R5sTZXN&sz=w1000", 
+                description: "Content Creator"
+            };
+
+            const links = [
+                { id: 'craftify', title: 'Craftify Website', icon: <Globe className="w-5 h-5 sm:w-6 sm:h-6" />, color: 'bg-emerald-600 text-white', url: 'https://www.craftify-mc.eu' },
+                { id: 'tiktok', title: 'der_46er', icon: <TikTokIcon />, color: 'bg-black text-white', url: 'https://tiktok.com/@der_46er' },
+                { id: 'youtube', title: 'der_46er', icon: <Youtube className="w-5 h-5 sm:w-6 sm:h-6" />, color: 'bg-red-600 text-white', url: 'https://youtube.com/@der_46er' },
+                { id: 'instagram', title: 'not_der46er', icon: <Instagram className="w-5 h-5 sm:w-6 sm:h-6" />, color: 'bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 text-white', url: 'https://instagram.com/not_der46er' },
+                { id: 'twitch', title: 'der_46er', icon: <Twitch className="w-5 h-5 sm:w-6 sm:h-6" />, color: 'bg-[#9146FF] text-white', url: 'https://twitch.tv/der_46er' },
+                { id: 'x', title: 'der_46er', icon: <XIcon />, color: 'bg-black text-white', url: 'https://twitter.com/der_46er' },
+                { id: 'bluesky', title: 'der_46er', icon: <BlueSkyIcon />, color: 'bg-[#0085ff] text-white', url: 'https://bsky.app/profile/thataustrianone.eu' },
+                { id: 'github', title: 'der46er', icon: <Github className="w-5 h-5 sm:w-6 sm:h-6" />, color: 'bg-zinc-800 text-white', url: 'https://github.com/der46er' }
+            ];
+
+            return (
+                <div className="min-h-screen bg-[#0f1115] text-white font-sans selection:bg-blue-500/30 overflow-x-hidden relative pb-12">
+                    {/* Background Glow */}
+                    <div className="fixed top-0 left-0 w-full h-full pointer-events-none">
+                        <div className="absolute top-[-5%] left-[-5%] w-[40%] h-[40%] bg-blue-600/10 blur-[100px] rounded-full" />
+                        <div className="absolute bottom-[-5%] right-[-5%] w-[40%] h-[40%] bg-purple-600/10 blur-[100px] rounded-full" />
+                    </div>
+
+                    <div className="relative z-10 max-w-xl mx-auto px-4 py-8 sm:py-12">
+                        {/* Header Section */}
+                        <header className="flex flex-col items-center text-center mb-8 sm:mb-10">
+                            <div className="relative mb-5 group cursor-default">
+                                <div className="absolute -inset-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full blur opacity-30 group-hover:opacity-70 transition duration-1000"></div>
+                                <img 
+                                    src={profile.avatar} 
+                                    alt="Avatar" 
+                                    className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full border-4 border-[#1a1d23] shadow-2xl object-cover bg-[#1a1d23]"
+                                />
+                            </div>
+                            <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-2 text-white drop-shadow-lg">
+                                @{profile.name}
+                            </h1>
+                            <p className="text-zinc-400 text-lg sm:text-xl font-medium max-w-md px-4">
+                                {profile.description}
+                            </p>
+                        </header>
+
+                        {/* Main Website Feature with Animated Ring */}
+                        <section className="mb-6 sm:mb-8">
+                            <a href="https://www.thataustrianone.eu" target="_blank" rel="noopener noreferrer" 
+                               className="relative group block p-0.5 rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden transition-all duration-300 transform active:scale-[0.98]">
+                                
+                                {/* The Animated Background Ring */}
+                                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-20 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] bg-[conic-gradient(transparent,transparent,transparent,#3b82f6,#a855f7,#ec4899)] animate-rotate-slow opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                
+                                {/* Content Card */}
+                                <div className="relative bg-[#161920]/95 backdrop-blur-xl rounded-[1.4rem] sm:rounded-[1.9rem] p-5 sm:p-7 flex flex-col items-center justify-center text-center z-10 m-[1px]">
+                                    <h2 className="text-xl sm:text-2xl font-bold text-white group-hover:text-blue-400 transition-colors leading-tight mb-1">Check out the full website</h2>
+                                    <p className="text-zinc-500 text-sm sm:text-lg font-medium">www.thataustrianone.eu</p>
+                                </div>
+                            </a>
+                        </section>
+
+                        {/* Social Links List */}
+                        <main className="grid gap-2.5 sm:gap-3">
+                            {links.map((link) => (
+                                <a key={link.id} href={link.url} target="_blank" rel="noopener noreferrer" aria-label={`Visit my ${link.id} profile`} className="group flex items-center p-2.5 sm:p-3 bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.05] hover:border-white/[0.12] rounded-xl transition-all duration-200 active:scale-[0.99]">
+                                    <div className={`flex-shrink-0 w-9 h-9 sm:w-11 sm:h-11 rounded-lg ${link.color} flex items-center justify-center shadow-md transition-all duration-300 group-hover:scale-105`}>
+                                        {link.icon}
+                                    </div>
+                                    <div className="ml-4 flex-grow text-left">
+                                        <h3 className="text-base sm:text-lg font-semibold tracking-wide text-zinc-100 group-hover:text-white transition-colors">
+                                            {link.title}
+                                        </h3>
+                                    </div>
+                                    <div className="flex-shrink-0 text-zinc-700 group-hover:text-zinc-400 transition-all duration-300 mr-1">
+                                        <ChevronRight size={18} />
+                                    </div>
+                                </a>
+                            ))}
+                        </main>
+
+                        {/* Footer Section */}
+                        <footer className="mt-12 pb-8 text-center flex flex-col items-center gap-6">
+                            <div className="flex justify-center">
+                                <button onClick={() => setShowLegal(true)} className="flex items-center gap-2 px-6 py-2.5 bg-white/5 hover:bg-white/10 border border-white/5 rounded-full text-xs sm:text-sm font-semibold transition-all text-zinc-400 hover:text-white">
+                                    <Info size={14} /> Legal Notice
+                                </button>
+                            </div>
+                            <div className="text-zinc-600 text-[10px] sm:text-xs font-medium tracking-widest uppercase">
+                                © {new Date().getFullYear()} • Linz, Austria
+                            </div>
+                        </footer>
+                    </div>
+
+                    {/* Legal Modal */}
+                    {showLegal && (
+                        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in">
+                            <div className="bg-[#14161b] border border-white/10 rounded-[2rem] w-full max-w-lg max-h-[85vh] overflow-hidden flex flex-col shadow-2xl">
+                                <div className="p-6 border-b border-white/5 flex justify-between items-center">
+                                    <h2 className="text-xl font-bold text-white tracking-tight">Legal Information</h2>
+                                    <button onClick={() => setShowLegal(false)} className="p-2 text-zinc-500 hover:text-white hover:bg-white/5 rounded-full transition-all">
+                                        <X size={20} />
+                                    </button>
+                                </div>
+                                
+                                <div className="p-6 overflow-y-auto custom-scroll space-y-8">
+                                    <section>
+                                        <h3 className="text-blue-500 font-bold uppercase text-[10px] tracking-[0.2em] mb-3 text-left">Imprint / Disclosure</h3>
+                                        <div className="text-zinc-100 space-y-1 text-base leading-relaxed text-left">
+                                            <p className="font-semibold text-white">Niklas Ausserwoeger</p>
+                                            <p className="text-zinc-400 text-sm italic mb-2">
+                                                Mailing address available upon justified request via email for privacy reasons.
+                                            </p>
+                                            <p className="text-zinc-400">4040 Linz, Austria</p>
+                                            <div className="pt-3">
+                                                <p className="text-zinc-500 text-xs">Direct Contact</p>
+                                                <p className="text-blue-400 font-medium">niklas.ausserwoeger@gmail.com</p>
+                                            </div>
+                                        </div>
+                                    </section>
+
+                                    <section>
+                                        <h3 className="text-blue-500 font-bold uppercase text-[10px] tracking-[0.2em] mb-3 text-left">Trademarks & Logos</h3>
+                                        <p className="text-zinc-400 text-sm leading-relaxed text-left">
+                                            All company logos, trademarks, and icons used on this website (e.g., from TikTok, YouTube, Instagram, X, BlueSky, GitHub) are the property of their respective owners. The use of these symbols is for identification and linking purposes only ("Nominative Fair Use"). No business connection or sponsorship exists.
+                                        </p>
+                                    </section>
+
+                                    <section>
+                                        <h3 className="text-blue-500 font-bold uppercase text-[10px] tracking-[0.2em] mb-3 text-left">Content & Usage</h3>
+                                        <div className="text-zinc-400 text-sm leading-relaxed text-left space-y-3">
+                                            <p>The content created by me (videos, texts, graphics) is subject to Austrian copyright law (© Niklas Ausserwoeger).</p>
+                                            <p className="p-3 bg-white/5 rounded-lg text-zinc-300 text-xs border border-white/5">
+                                                <strong>Open Usage:</strong> I generally do not mind the private sharing of my content on social networks. Commercial use or systematic copying of my design/appearance is prohibited without prior consultation.
+                                            </p>
+                                        </div>
+                                    </section>
+
+                                    <section>
+                                        <h3 className="text-blue-500 font-bold uppercase text-[10px] tracking-[0.2em] mb-3 text-left">Liability for Links</h3>
+                                        <p className="text-zinc-400 text-sm leading-relaxed text-left">
+                                            I assume no liability for the content of external links. The operators of the linked pages are solely responsible for their content.
+                                        </p>
+                                    </section>
+
+                                    <div className="pt-4 pb-2 border-t border-white/5 text-zinc-600 text-[9px] uppercase tracking-widest text-center">
+                                        Legal Compliance • ECG Austria
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
