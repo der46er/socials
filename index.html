@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Social Links | thataustrianone</title>
     
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/der46er/webseite/main/assets/favicon.png">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -92,6 +91,10 @@
         .red-glow {
             box-shadow: 0 0 50px -10px rgba(220, 38, 38, 0.4);
         }
+
+        .emerald-glow {
+            box-shadow: 0 0 50px -10px rgba(16, 185, 129, 0.4);
+        }
     </style>
 </head>
 <body>
@@ -110,7 +113,6 @@
             </svg>
         );
 
-        // Fix: BlueSkyIcon Definition hinzugefügt
         const BlueSkyIcon = () => (
             <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
                 <path d="M12 10.8c-1.087-2.114-4.046-5.05-6.056-5.05C3.141 5.75 2 7.23 2 9.422c0 1.25.59 4.312 2.825 5.419 2.052 1.018 3.328 1.356 3.328 1.356s-.897.234-2.153.234C3.89 16.431 2 17.5 2 19.462 2 21.238 4.212 22 6 22c3.75 0 6-3 6-3s2.25 3 6 3c1.788 0 4-0.762 4-2.538 0-1.962-1.89-3.031-4-3.031-1.256 0-2.153-0.234-2.153-0.234s1.276-0.338 3.328-1.356c2.235-1.107 2.825-4.169 2.825-5.419 0-2.192-1.141-3.672-3.944-3.672-2.01 0-4.969 2.936-6.056 5.05z"/>
@@ -133,8 +135,9 @@
             en: {
                 flag: "🇬🇧", name: "English", back: "BACK",
                 profileDesc: "Content Creator",
-                featureTitle: "Check the full website",
-                featureUrl: "www.thataustrianone.eu",
+                featureTitle: "Craftify ",
+                featureHighlight: "Mc",
+                featureUrl: "www.craftify-mc.eu",
                 spotifyTitle: "Currently listening:",
                 spotifyQuiet: "Quiet Mode",
                 legal: "LEGAL & INFO",
@@ -152,8 +155,9 @@
             de: {
                 flag: "🇦🇹", name: "Deutsch", back: "ZURÜCK",
                 profileDesc: "Content Creator",
-                featureTitle: "Zur vollen Webseite",
-                featureUrl: "www.thataustrianone.eu",
+                featureTitle: "Craftify ",
+                featureHighlight: "Mc",
+                featureUrl: "www.craftify-mc.eu",
                 spotifyTitle: "Höre gerade live:",
                 spotifyQuiet: "Quiet Mode",
                 legal: "RECHTLICHES & INFO",
@@ -184,7 +188,7 @@
             };
 
             const links = [
-                { id: 'craftify', title: 'Craftify Website', icon: <Globe className="w-6 h-6" />, color: 'bg-emerald-600', url: 'https://www.craftify-mc.eu' },
+                { id: 'website', title: 'thataustrianone', icon: <Globe className="w-6 h-6" />, color: 'bg-red-600', url: 'https://www.thataustrianone.eu' },
                 { id: 'tiktok', title: 'der_46er', icon: <TikTokIcon />, color: 'bg-black', url: 'https://tiktok.com/@der_46er' },
                 { id: 'youtube', title: 'der_46er', icon: <Youtube className="w-6 h-6" />, color: 'bg-red-600', url: 'https://youtube.com/@der_46er' },
                 { id: 'instagram', title: 'not_der46er', icon: <Instagram className="w-6 h-6" />, color: 'bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600', url: 'https://instagram.com/not_der46er' },
@@ -227,7 +231,7 @@
             }, []);
 
             return (
-                <div className="min-h-screen bg-[#0b0d11] text-white selection:bg-red-500/30 overflow-x-hidden relative pb-12">
+                <div className="min-h-screen bg-[#0b0d11] text-white selection:bg-emerald-500/30 overflow-x-hidden relative pb-12">
                     {/* Background Glow Red Theme */}
                     <div className="fixed top-0 left-0 w-full h-full pointer-events-none">
                         <div className="absolute top-[-5%] left-[-5%] w-[40%] h-[40%] bg-red-600/10 blur-[100px] rounded-full" />
@@ -276,13 +280,16 @@
 
                         {/* Main Link Highlight */}
                         <section className="mb-8">
-                            <a href="https://www.thataustrianone.eu" target="_blank" 
-                               className="relative group block p-0.5 rounded-[2rem] overflow-hidden transition-all duration-300 transform active:scale-[0.98] red-glow">
-                                <div className="absolute inset-0 bg-gradient-to-r from-red-900 via-red-700 to-red-950 opacity-100 transition-opacity duration-500"></div>
-                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] bg-[conic-gradient(transparent,transparent,transparent,#dc2626,#991b1b,#7f1d1d)] animate-rotate-slow opacity-100 transition-opacity duration-500"></div>
+                            <a href="https://www.craftify-mc.eu" target="_blank" 
+                               className="relative group block p-0.5 rounded-[2rem] overflow-hidden transition-all duration-300 transform active:scale-[0.98] emerald-glow">
+                                <div className="absolute inset-0 bg-gradient-to-r from-emerald-900 via-emerald-700 to-emerald-950 opacity-100 transition-opacity duration-500"></div>
+                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] bg-[conic-gradient(transparent,transparent,transparent,#10b981,#047857,#064e3b)] animate-rotate-slow opacity-100 transition-opacity duration-500"></div>
                                 
                                 <div className="relative bg-[#161920]/95 backdrop-blur-xl rounded-[1.9rem] p-6 sm:p-10 flex flex-col items-center justify-center text-center z-10 m-[1px]">
-                                    <h2 className="text-xl sm:text-2xl font-black text-red-500 uppercase italic mb-1">{t.featureTitle}</h2>
+                                    <img src="https://raw.githubusercontent.com/der46er/craftify/main/assets/favicon.png" alt="Craftify Logo" className="w-16 h-16 sm:w-20 sm:h-20 mb-4 object-contain" />
+                                    <h2 className="text-2xl sm:text-3xl font-black uppercase italic mb-1 text-white tracking-wide">
+                                        {t.featureTitle}<span className="text-[#4ade80]">{t.featureHighlight}</span>
+                                    </h2>
                                     <p className="text-zinc-500 text-sm sm:text-lg font-bold uppercase tracking-widest">{t.featureUrl}</p>
                                 </div>
                             </a>
