@@ -104,10 +104,15 @@
         );
 
         const Youtube = ({className}) => (
-            <svg className={className} fill="currentColor" viewBox="0 0 24 24">
-                <path d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.86-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M10,15.464V8.536L16,12L10,15.464z"/>
-            </svg>
-        );
+    <svg 
+        className={className} 
+        fill="currentColor" 
+        viewBox="0 0 24 24" 
+        style={{ objectFit: 'contain', height: '100%', width: '100%' }}
+    >
+        <path d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.86-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M10,15.464V8.536L16,12L10,15.464z"/>
+    </svg>
+);
         
         const Instagram = ({className}) => (
             <svg className={className} fill="currentColor" viewBox="0 0 24 24">
@@ -137,7 +142,7 @@
 
             const links = [
                 { id: 'discord', title: 'Discord', icon: <DiscordIcon className="w-6 h-6 text-white" />, color: 'bg-[#5865F2]', url: 'https://discord.gg/jTFfFD823J' },
-                { id: 'youtube', title: 'YouTube', icon: <Youtube className="w-6 h-6 text-white" />, color: 'bg-[#dc2626]', url: 'https://youtube.com/@der_46er' },
+                { id: 'youtube', title: 'YouTube', icon: <Youtube className="w-6 h-6 text-white" />, color: 'bg-red-600 p-2', url: 'https://youtube.com/@der_46er' },
                 { id: 'instagram', title: 'Instagram', icon: <Instagram className="w-6 h-6 text-white" />, color: '', inlineStyle: { background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)' }, url: 'https://instagram.com/not_der46er' },
                 { id: 'twitch', title: 'Twitch', icon: <Twitch className="w-6 h-6 text-white" />, color: 'bg-[#9146FF]', url: 'https://twitch.tv/der_46er' },
                 { id: 'x', title: 'X', icon: <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-white"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>, color: 'bg-black', url: 'https://twitter.com/der_46er' },
